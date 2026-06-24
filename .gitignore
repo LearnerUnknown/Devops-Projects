@@ -1,0 +1,23 @@
+# GitHub credentials and local setup (never commit)
+.env
+.git-credentials
+setup-github.sh
+
+# Local Python / tooling
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/*.pyc
+**/.DS_Store
+
+# Generated reports
+**/reports/*.md
+!**/reports/.gitkeep
+
+# Project secrets
+**/.env
+!**/.env.example
+
+# IDE
+**/.vscode/
+**/.idea/

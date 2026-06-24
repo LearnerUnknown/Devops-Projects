@@ -1,0 +1,16 @@
+replicaCount: 1
+
+image:
+  repository: myregistry.azurecr.io/myapp
+  pullPolicy: IfNotPresent
+
+service:
+  port: 80
+
+ingress:
+  enabled: false
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 5

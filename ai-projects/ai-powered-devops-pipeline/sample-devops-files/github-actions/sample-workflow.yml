@@ -1,0 +1,43 @@
+name: Build and Deploy Application
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Build application
+        run: |
+          echo "Building application..."
+          python setup.py build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Azure
+        run: |
+          az webapp deploy --resource-group myapp-rg --name myapp-prod
+        env:
+          AZURE_CLIENT_SECRET: "hardcoded-secret-value-12345"
+          DB_PASSWORD: "SuperSecret@123"

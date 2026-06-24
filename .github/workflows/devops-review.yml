@@ -1,0 +1,43 @@
+name: DevOps Pipeline Review
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+defaults:
+  run:
+    working-directory: ai-projects/ai-powered-devops-pipeline
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: ai-projects/ai-powered-devops-pipeline/requirements.txt
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: python -m pytest tests/ -v
+
+      - name: Run DevOps Pipeline Reviewer
+        run: |
+          mkdir -p reports
+          python app/main.py --path sample-devops-files --output reports/devops-review-report.md
+
+      - name: Upload review report
+        uses: actions/upload-artifact@v4
+        with:
+          name: devops-review-report
+          path: ai-projects/ai-powered-devops-pipeline/reports/devops-review-report.md

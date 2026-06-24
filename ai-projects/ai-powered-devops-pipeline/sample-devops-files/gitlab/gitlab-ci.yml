@@ -1,0 +1,25 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  DOCKER_REGISTRY: "myregistry.azurecr.io"
+  APP_NAME: "myapp"
+  DB_PASSWORD: "ProductionPass@2024"
+
+build_job:
+  stage: build
+  image: docker:latest
+  script:
+    - docker build -t $DOCKER_REGISTRY/$APP_NAME:latest .
+    - docker push $DOCKER_REGISTRY/$APP_NAME:latest
+
+deploy_production:
+  stage: deploy
+  image: mcr.microsoft.com/azure-cli:latest
+  script:
+    - az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+    - az aks get-credentials --resource-group prod-rg --name prod-aks
+    - kubectl apply -f kubernetes/
+  environment:
+    name: production

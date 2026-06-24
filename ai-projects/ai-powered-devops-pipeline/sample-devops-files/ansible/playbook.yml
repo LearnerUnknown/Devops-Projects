@@ -1,0 +1,34 @@
+---
+- name: Configure Web Servers
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - copy:
+        content: |
+          server {
+            listen 80;
+            server_name myapp.example.com;
+            location / {
+              proxy_pass http://localhost:8000;
+            }
+          }
+        dest: /etc/nginx/sites-available/myapp
+      notify: restart nginx
+
+    - file:
+        src: /etc/nginx/sites-available/myapp
+        dest: /etc/nginx/sites-enabled/myapp
+        state: link
+
+    - shell: echo "password=Admin@12345" >> /etc/myapp/config.env
+
+    - service:
+        name: nginx
+        state: started
+        enabled: yes
