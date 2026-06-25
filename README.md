@@ -17,15 +17,3 @@ pip install -r requirements.txt
 pytest tests/ -v
 python app/main.py --path sample-devops-files --output reports/devops-review-report.md
 ```
-
-## Git commands
-
-```bash
-# Pull latest changes
-git pull origin main
-
-# Push changes
-git add .
-git commit -m "Your message"
-git push origin main
-```
