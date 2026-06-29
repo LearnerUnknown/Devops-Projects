@@ -1,0 +1,8 @@
+LAST SEEN   TYPE      REASON              OBJECT                                        MESSAGE
+3m          Normal    Scheduled           pod/frontend-app-5b8c9d7f6-mn4qr              Successfully assigned production/frontend-app-5b8c9d7f6-mn4qr to aks-nodepool1-12345678-vmss000002
+3m          Normal    Pulling             pod/frontend-app-5b8c9d7f6-mn4qr              Pulling image "mycompanyacr.azurecr.io/frontend-app:v3.1.0-rc2"
+2m          Warning   Failed              pod/frontend-app-5b8c9d7f6-mn4qr              Failed to pull image "mycompanyacr.azurecr.io/frontend-app:v3.1.0-rc2": rpc error: code = Unknown desc = Error response from daemon: pull access denied
+2m          Warning   Failed              pod/frontend-app-5b8c9d7f6-mn4qr              Error: ErrImagePull
+90s         Normal    BackOff             pod/frontend-app-5b8c9d7f6-mn4qr              Back-off pulling image "mycompanyacr.azurecr.io/frontend-app:v3.1.0-rc2"
+60s         Warning   Failed              pod/frontend-app-5b8c9d7f6-mn4qr              Error: ImagePullBackOff
+30s         Warning   Failed              pod/frontend-app-5b8c9d7f6-mn4qr              unauthorized: authentication required for mycompanyacr.azurecr.io/frontend-app:v3.1.0-rc2

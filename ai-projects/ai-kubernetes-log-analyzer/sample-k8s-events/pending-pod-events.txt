@@ -1,0 +1,7 @@
+LAST SEEN   TYPE      REASON              OBJECT                                        MESSAGE
+10m         Normal    SuccessfulCreate    replicaset/analytics-worker-6f8d9c7b5          Created pod: analytics-worker-6f8d9c7b5-p4x2m
+10m         Warning   FailedScheduling    pod/analytics-worker-6f8d9c7b5-p4x2m          0/3 nodes are available: 1 node(s) had untolerated taint {node.kubernetes.io/disk-pressure: }, 2 node(s) had insufficient memory
+8m          Warning   FailedScheduling    pod/analytics-worker-6f8d9c7b5-p4x2m          0/3 nodes are available: 1 node(s) had untolerated taint {node.kubernetes.io/disk-pressure: }, 2 node(s) had insufficient memory. preemption: 0/3 nodes are available: 3 Preemption is not helpful for scheduling
+5m          Warning   FailedScheduling    pod/analytics-worker-6f8d9c7b5-p4x2m          0/3 nodes are available: insufficient cpu, insufficient memory
+3m          Normal    TriggeredScaleUp    pod/analytics-worker-6f8d9c7b5-p4x2m          pod triggered scale-up: [{aks-nodepool1 3->4 (max: 10)}]
+1m          Normal    Scheduled           pod/analytics-worker-6f8d9c7b5-p4x2m          Successfully assigned production/analytics-worker-6f8d9c7b5-p4x2m to aks-nodepool1-12345678-vmss000003

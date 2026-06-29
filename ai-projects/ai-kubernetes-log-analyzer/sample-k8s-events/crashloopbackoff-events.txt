@@ -1,0 +1,11 @@
+LAST SEEN   TYPE      REASON              OBJECT                                        MESSAGE
+2m          Normal    Scheduled           pod/payment-service-7d9f8b6c4-xk2mv           Successfully assigned production/payment-service-7d9f8b6c4-xk2mv to aks-nodepool1-12345678-vmss000001
+2m          Normal    Pulling             pod/payment-service-7d9f8b6c4-xk2mv           Pulling image "mycompanyacr.azurecr.io/payment-service:v2.4.1"
+2m          Normal    Pulled              pod/payment-service-7d9f8b6c4-xk2mv           Successfully pulled image "mycompanyacr.azurecr.io/payment-service:v2.4.1"
+2m          Normal    Created             pod/payment-service-7d9f8b6c4-xk2mv           Created container payment-service
+2m          Normal    Started             pod/payment-service-7d9f8b6c4-xk2mv           Started container payment-service
+90s         Warning   BackOff             pod/payment-service-7d9f8b6c4-xk2mv           Back-off restarting failed container payment-service in pod payment-service-7d9f8b6c4-xk2mv_production
+60s         Warning   BackOff             pod/payment-service-7d9f8b6c4-xk2mv           Back-off restarting failed container payment-service in pod payment-service-7d9f8b6c4-xk2mv_production
+30s         Warning   BackOff             pod/payment-service-7d9f8b6c4-xk2mv           Back-off restarting failed container payment-service in pod payment-service-7d9f8b6c4-xk2mv_production
+15s         Normal    Pulled              pod/payment-service-7d9f8b6c4-xk2mv           Container image already present on machine
+10s         Warning   CrashLoopBackOff    pod/payment-service-7d9f8b6c4-xk2mv           Back-off 5m0s restarting failed container

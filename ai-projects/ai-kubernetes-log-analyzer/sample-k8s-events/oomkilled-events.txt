@@ -1,0 +1,11 @@
+LAST SEEN   TYPE      REASON              OBJECT                                        MESSAGE
+5m          Normal    Scheduled           pod/data-processor-8c4d7f6b5-q9r2t             Successfully assigned production/data-processor-8c4d7f6b5-q9r2t to aks-nodepool1-12345678-vmss000001
+5m          Normal    Pulling             pod/data-processor-8c4d7f6b5-q9r2t             Pulling image "mycompanyacr.azurecr.io/data-processor:v1.8.0"
+5m          Normal    Pulled              pod/data-processor-8c4d7f6b5-q9r2t             Successfully pulled image "mycompanyacr.azurecr.io/data-processor:v1.8.0"
+5m          Normal    Created             pod/data-processor-8c4d7f6b5-q9r2t             Created container data-processor
+5m          Normal    Started             pod/data-processor-8c4d7f6b5-q9r2t             Started container data-processor
+2m          Warning   OOMKilling          pod/data-processor-8c4d7f6b5-q9r2t             Container data-processor exceeded memory limit (256Mi)
+2m          Warning   OOMKilled           pod/data-processor-8c4d7f6b5-q9r2t             Container data-processor terminated with exit code 137
+90s         Normal    Pulled              pod/data-processor-8c4d7f6b5-q9r2t             Container image already present on machine
+60s         Normal    Started             pod/data-processor-8c4d7f6b5-q9r2t             Started container data-processor
+30s         Warning   OOMKilled           pod/data-processor-8c4d7f6b5-q9r2t             Container data-processor terminated with exit code 137 (repeated OOMKill)

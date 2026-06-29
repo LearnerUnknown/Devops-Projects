@@ -1,0 +1,49 @@
+name: K8s Log Analysis
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ai-projects/ai-kubernetes-log-analyzer/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'ai-projects/ai-kubernetes-log-analyzer/**'
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: ai-projects/ai-kubernetes-log-analyzer
+
+jobs:
+  test-and-analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: pytest tests/ -v
+
+      - name: Run Kubernetes log analyzer
+        run: |
+          python app/main.py \
+            --logs sample-logs \
+            --events sample-k8s-events \
+            --output reports/kubernetes-root-cause-report.md
+
+      - name: Upload analysis report
+        uses: actions/upload-artifact@v4
+        with:
+          name: kubernetes-root-cause-report
+          path: ai-projects/ai-kubernetes-log-analyzer/reports/kubernetes-root-cause-report.md
+          retention-days: 30
